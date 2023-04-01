@@ -16,7 +16,7 @@ def upload_data_to_staging(s3_filename):
     response = requests.get(s3_filename)
     local_filename = s3_filename.replace('https://storage.yandexcloud.net/hackathon/', '')
     log.info(f'Save local file: {local_filename}')
-    open(f'/lessons/events/{local_filenam}', 'wb').write(response.content)
+    open(f'/lessons/events/{local_filename}', 'wb').write(response.content)
 
 
 @dag(

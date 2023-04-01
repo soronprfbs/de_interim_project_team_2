@@ -17,7 +17,8 @@ def main():
     events = spark.read.parquet(base_input_path)
 
     event_time = events \
-            .select('event_id','event_type', 'event_timestamp', 'page_url_path' , 'user_custom_id')
+                    .select('event_id','event_type', 'event_timestamp', 'page_url_path' , 'user_custom_id')
+    
     window = Window.partitionBy('user_custom_id').orderBy(F.col('user_custom_id'))
 
     mart = event_time \
